@@ -47,15 +47,23 @@ public class BinaryTree<E> implements Serializable {
 	}
 
 	public BinaryTree<E> getLeftSubtree() {
-		BinaryTree<E> temp = new BinaryTree(root.left);
+		if(root != null && root.left != null){
 
-		return temp;
+		return new BinaryTree<E>(root.left);
+		}
+		else {
+			return new BinaryTree<E>(null);
+		}
 	}
 
 	public BinaryTree<E> getRightSubtree() {
-		BinaryTree<E> temp = new BinaryTree(root.right);
+		if(root != null && root.right != null){
 
-		return temp;
+		return new BinaryTree(root.right);
+		}
+		else {
+			return new BinaryTree<E>(null);
+		}
 	}
 
 	public E getData() {
@@ -63,16 +71,26 @@ public class BinaryTree<E> implements Serializable {
 	}
 
 	public boolean isLeaf() {
-		return ((root.left == null) && (root.right == null));
+		return (root == null) || ((root.left == null) && (root.right == null));
 	}
 
 	public String toString() {
-		String temp = null;
-		return temp;
+		StringBuilder sb = new StringBuilder();
+		preOrderTraverse(root, 1, sb);
+		return sb.toString();
 	}
 
 	private void preOrderTraverse(Node<E> node, int depth, StringBuilder sb) {
-		// TODO
+		for (int i = 1; i < depth; i ++){
+			sb.append("   ");
+		}
+		
+		if(node == null){
+			sb.append("null\n");
+			sb.append("\n");
+			preOrderTraverse(node.left, depth + 1, sb);
+			preOrderTraverse(node.right, depth + 1, sb);
+		}
 	}
 
 	public BinaryTree<E> readBinaryTree(Scanner scan) {
