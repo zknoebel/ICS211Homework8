@@ -29,7 +29,7 @@ public class BinaryTree<E> implements Serializable {
 
 	}
 
-	protected class Node<E> {
+	protected static class Node<E> {
 		protected E data;
 		protected Node<E> left;
 		protected Node<E> right;
@@ -47,21 +47,19 @@ public class BinaryTree<E> implements Serializable {
 	}
 
 	public BinaryTree<E> getLeftSubtree() {
-		if(root != null && root.left != null){
+		if (root != null && root.left != null) {
 
-		return new BinaryTree<E>(root.left);
-		}
-		else {
+			return new BinaryTree<E>(root.left);
+		} else {
 			return new BinaryTree<E>(null);
 		}
 	}
 
 	public BinaryTree<E> getRightSubtree() {
-		if(root != null && root.right != null){
+		if (root != null && root.right != null) {
 
-		return new BinaryTree(root.right);
-		}
-		else {
+			return new BinaryTree(root.right);
+		} else {
 			return new BinaryTree<E>(null);
 		}
 	}
@@ -81,11 +79,11 @@ public class BinaryTree<E> implements Serializable {
 	}
 
 	private void preOrderTraverse(Node<E> node, int depth, StringBuilder sb) {
-		for (int i = 1; i < depth; i ++){
+		for (int i = 1; i < depth; i++) {
 			sb.append("   ");
 		}
-		
-		if(node == null){
+
+		if (node == null) {
 			sb.append("null\n");
 			sb.append("\n");
 			preOrderTraverse(node.left, depth + 1, sb);
