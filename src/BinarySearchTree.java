@@ -107,6 +107,9 @@ public class BinarySearchTree<E> extends BinaryTree implements SearchTree<E> {
 		}
 	}
 
+	public void inorderString(){
+		
+	}
 	@Override
 	public boolean remove(E target) {
 		if (delete(target) == null) {
