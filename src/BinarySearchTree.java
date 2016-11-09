@@ -96,47 +96,45 @@ public class BinarySearchTree<E> extends BinaryTree implements SearchTree<E> {
 		}
 	}
 
-	private E findLargestChild(Node<E> parent){
-		if(parent.right.right == null){
+	private E findLargestChild(Node<E> parent) {
+		if (parent.right.right == null) {
 			E returnValue = parent.right.data;
 			parent.right = parent.right.left;
 			return returnValue;
-		}
-		else{
+		} else {
 			return findLargestChild(parent.right);
 		}
 	}
 
-	public void printTree(){
+	public void printTree() {
 		System.out.println(toString());
 	}
-	
-	public String inorderString(){
+
+	public String inorderString() {
 		StringBuilder sb = new StringBuilder();
 		inOrderTraverse(root, sb);
 		return sb.toString();
 	}
-	
-	public void printInorderString(){
+
+	public void printInorderString() {
 		System.out.println(inorderString());
 	}
-	
-	private void inOrderTraverse(Node<E> node, StringBuilder sb){
-		if(node != null){
+
+	private void inOrderTraverse(Node<E> node, StringBuilder sb) {
+		if (node != null) {
 			inOrderTraverse(node.left, sb);
 			sb.append(node.toString());
 			sb.append("\n");
 			inOrderTraverse(node.right, sb);
 		}
 	}
-	
-	
+
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		preOrderTraverse(root, 1, sb);
 		return sb.toString();
 	}
-	
+
 	private void preOrderTraverse(Node<E> node, int depth, StringBuilder sb) {
 		for (int i = 1; i < depth; i++) {
 			sb.append("   ");
@@ -151,7 +149,7 @@ public class BinarySearchTree<E> extends BinaryTree implements SearchTree<E> {
 			preOrderTraverse(node.right, depth + 1, sb);
 		}
 	}
-	
+
 	@Override
 	public boolean remove(E target) {
 		if (delete(target) == null) {

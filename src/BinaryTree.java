@@ -91,8 +91,8 @@ public class BinaryTree<E> implements Serializable {
 			preOrderTraverse(node.right, depth + 1, sb);
 		}
 	}
-	
-	public void printToString(){
+
+	public void printToString() {
 		System.out.print(toString());
 	}
 
