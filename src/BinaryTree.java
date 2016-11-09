@@ -85,6 +85,7 @@ public class BinaryTree<E> implements Serializable {
 
 		if (node == null) {
 			sb.append("null\n");
+		} else {
 			sb.append("\n");
 			preOrderTraverse(node.left, depth + 1, sb);
 			preOrderTraverse(node.right, depth + 1, sb);

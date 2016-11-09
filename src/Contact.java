@@ -22,4 +22,7 @@ public class Contact {
 		return contactNumber;
 	}
 	
+	public String toString(){
+		return lastName + ", " + firstName + ": " + contactNumber;
+	}
 }
