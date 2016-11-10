@@ -48,5 +48,9 @@ public class Main {
 
     testTree.printInorderString();
     testTree.printToString();
+    System.out.println(testTree.maxDepth());
+    
+    BinarySearchTree<Contact> emptyTree = new BinarySearchTree<Contact>(comp);
+    System.out.println(emptyTree.maxDepth());
   }
 }

@@ -68,6 +68,15 @@ individually.
 Even though this poorly configured binary search tree is possible, we will
 just consider binary search trees as a whole as a big O of O(log n). 
 
+The big O of the add method, which does the sorting in the binary search tree
+is O(n log n) this is because the search method is O(log n) and the find method
+searches for every item it adds.
+
+ _____________________________________________________________________________
+|                                                                             |
+| support this stuff with emperical data...                                   |
+|_____________________________________________________________________________|
+
 Contributors:
 	For this assignment, most of the code was already written in the text book,
 so I copied what was useful and used it in my assignment. Probably about 80% 

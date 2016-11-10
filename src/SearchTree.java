@@ -41,16 +41,11 @@ public interface SearchTree<E> {
      * Returns elements of the tree in "level-order" order.
      * @return List of elements.
      */
-    default List<E> levelOrderTraversal() {
-        throw new UnsupportedOperationException();
-    }
+    List<E> levelOrderTraversal(); 
 
     /**
      * Returns the maximum depth of the tree.  An empty tree has a depth of 0.
      * @return Max depth.
      */
-    default int maxDepth() {
-        throw new UnsupportedOperationException();
-    }
-
+    int maxDepth();
 }
