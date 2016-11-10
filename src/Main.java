@@ -46,7 +46,7 @@ public class Main {
       testTree.add(contacts[i]);
     }
 
-    testTree.printInorderString();
+    testTree.inorderString();
     testTree.printToString();
     System.out.println(testTree.maxDepth());
     
