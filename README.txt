@@ -67,3 +67,9 @@ individually.
 
 Even though this poorly configured binary search tree is possible, we will
 just consider binary search trees as a whole as a big O of O(log n). 
+
+Contributors:
+	For this assignment, most of the code was already written in the text book,
+so I copied what was useful and used it in my assignment. Probably about 80% 
+of what is in this project was either copied straight out of the book or
+given to us by professor Moore.
