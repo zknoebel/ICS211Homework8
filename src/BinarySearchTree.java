@@ -30,6 +30,7 @@ public class BinarySearchTree<E> extends BinaryTree implements SearchTree<E> {
 	private E deleteReturn;
 	private int depth = 0;
 	private List<E> levelOrderList;
+	private ArrayList<ArrayList<E>> levelSorter;
 
 	/**
 	 * 
@@ -43,7 +44,8 @@ public class BinarySearchTree<E> extends BinaryTree implements SearchTree<E> {
 
 	/**
 	 * starter method for Node<E> add() this method sets "root" for Node<E>
-	 * add() then it returns whether or not the "item" was successfully added
+	 * add() then it returns whether or not the tree had an item that matched
+	 * "item" alread inside it
 	 */
 	@Override
 	public boolean add(E item) {
@@ -306,23 +308,43 @@ public class BinarySearchTree<E> extends BinaryTree implements SearchTree<E> {
 
 	@Override
 	public List<E> levelOrderTraversal() {
-		if (root.data != null) {
-			levelOrderList = new ArrayList<E>();
-			levelOrderList.add((E) root);
-			levelOrderTraversal(root);
+		levelSorter = new ArrayList<ArrayList<E>>();
+		List<E> returnList = new ArrayList<E>();
+		
+		levelOrderTraversal(root, 1);
+
+		for(int i = 0; i < levelSorter.size(); i ++){
+			for(int j = 0; j < levelSorter.get(i).size(); j ++){
+				returnList.add(levelSorter.get(i).remove(0));
+			}
 		}
-		return levelOrderList;
+		return returnList;
 	}
 
-	private void levelOrderTraversal(Node<E> localRoot) {
-		if(localRoot != null){
-			if(localRoot.left.data != null){
-				levelOrderList.add((E)localRoot.right.data);
-			}
-			if(localRoot.right.data != null){
-				levelOrderList.add((E) localRoot.right.data);
-			}
-			if(localRoot.left.data)
+	/**
+	 * creates and array list of array lists
+	 * 
+	 * fills the sub-array lists with the nodes at that level
+	 * 
+	 * (first sub-array list holds the root, second sub-array list holds the two
+	 * children of root, third sub-array list holds the grand children of
+	 * root... and so on until the entire tree has been traversed and added)
+	 * 
+	 * @param localRoot
+	 * @param depth
+	 * @return
+	 */
+	private void levelOrderTraversal(Node<E> localRoot, int depth) {
+
+		if (levelSorter.size() < depth) {
+			levelSorter.add(new ArrayList<E>());
+		}
+		if (localRoot != null && localRoot.data != null) {
+
+			levelSorter.get(depth - 1).add((E) localRoot);
+
+			levelOrderTraversal(localRoot.left, depth + 1);
+			levelOrderTraversal(localRoot.right, depth + 1);
 		}
 	}
 
