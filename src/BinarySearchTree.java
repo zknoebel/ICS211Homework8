@@ -306,6 +306,10 @@ public class BinarySearchTree<E> extends BinaryTree implements SearchTree<E> {
 		}
 	}
 
+	/**
+	 * creates a list of elements from the tree, ordered by level
+	 * from left to right
+	 */
 	@Override
 	public List<E> levelOrderTraversal() {
 		levelSorter = new ArrayList<ArrayList<E>>();
@@ -314,9 +318,7 @@ public class BinarySearchTree<E> extends BinaryTree implements SearchTree<E> {
 		levelOrderTraversal(root, 1);
 
 		for(int i = 0; i < levelSorter.size(); i ++){
-			for(int j = 0; j < levelSorter.get(i).size(); j ++){
-				returnList.add(levelSorter.get(i).remove(0));
-			}
+			returnList.addAll(levelSorter.get(i));
 		}
 		return returnList;
 	}
@@ -341,7 +343,7 @@ public class BinarySearchTree<E> extends BinaryTree implements SearchTree<E> {
 		}
 		if (localRoot != null && localRoot.data != null) {
 
-			levelSorter.get(depth - 1).add((E) localRoot);
+			levelSorter.get(depth - 1).add((E) localRoot.data);
 
 			levelOrderTraversal(localRoot.left, depth + 1);
 			levelOrderTraversal(localRoot.right, depth + 1);
