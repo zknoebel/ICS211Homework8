@@ -24,12 +24,12 @@ import java.util.List;
  *
  * @param <E>
  */
-public class BinarySearchTree<E> extends BinaryTree implements SearchTree<E> {
-	private Comparator<E> comp;
+public class BinarySearchTree<E> extends BinaryTree<E> implements SearchTree<E> {
+  private static final long serialVersionUID = 1L;
+  private Comparator<E> comp;
 	private boolean addReturn = false;
 	private E deleteReturn;
 	private int depth = 0;
-	private List<E> levelOrderList;
 	private ArrayList<ArrayList<E>> levelSorter;
 
 	/**
@@ -38,7 +38,7 @@ public class BinarySearchTree<E> extends BinaryTree implements SearchTree<E> {
 	 *            a comparator that will compare the objects placed in the nodes
 	 *            of the tree
 	 */
-	public BinarySearchTree(Comparator comp) {
+	public BinarySearchTree(Comparator<E> comp) {
 		this.comp = comp;
 	}
 

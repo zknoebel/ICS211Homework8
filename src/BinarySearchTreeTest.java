@@ -202,6 +202,18 @@ public class BinarySearchTreeTest {
         }
     }
     
-    // TODO test corner cases
-
+    @Test
+    public void testCornerCases(){
+      BinarySearchTree<Integer> btree1 = new BinarySearchTree<Integer>(new TreeIntComparator());
+      BinarySearchTree<Integer> btree2 = new BinarySearchTree<Integer>(new TreeIntComparator());
+      
+      for(int i = 0; i < 1000; i ++){
+        btree1.add(i);
+        btree2.add(999 - i);
+        
+      }
+      
+      
+    }
+    // TODO test corner case
 }
