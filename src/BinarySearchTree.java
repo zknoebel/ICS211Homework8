@@ -67,7 +67,6 @@ public class BinarySearchTree<E> extends BinaryTree implements SearchTree<E> {
 	 *          previously found position in the tree
 	 */
 	private Node<E> add(Node<E> localRoot, E item) {
-		// TODO make sure it replaces an existing item if it is a double
 		if (localRoot == null) {
 			addReturn = false;
 			return new Node<E>(item);

@@ -14,6 +14,10 @@ import java.util.Scanner;
  * @param <E>: The tree can have any type of object in it
  */
 public class BinaryTree<E> implements Serializable {
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
   protected Node<E> root;
 
 
