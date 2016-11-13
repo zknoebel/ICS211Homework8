@@ -52,5 +52,11 @@ public class Main {
     
     BinarySearchTree<Contact> emptyTree = new BinarySearchTree<Contact>(comp);
     System.out.println(emptyTree.maxDepth());
+    
+    /**
+     * set up tests for efficiency between binary search tree, bubble sort, 
+     * selection sort and insertion sort
+     */
+    
   }
 }
