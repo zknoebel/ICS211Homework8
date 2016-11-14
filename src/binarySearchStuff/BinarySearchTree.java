@@ -1,3 +1,4 @@
+package binarySearchStuff;
 /**
  * BinarySearchTree is a class that extends BinaryTree and uses the binary tree
  * structure to sort and search for objects.

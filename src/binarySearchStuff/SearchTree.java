@@ -1,3 +1,4 @@
+package binarySearchStuff;
 /**
  * This interface was give to us to use in the homework
  */

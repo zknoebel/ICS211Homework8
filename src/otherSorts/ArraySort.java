@@ -1,4 +1,6 @@
 package otherSorts;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Comparator;
 
 /**
@@ -133,21 +135,30 @@ public class ArraySort<E> {
    * prints out the name of the sort used, the sorted array, time and number of comparisons and swaps made for the used
    * sort method
    */
-  public void printResults(E[] arrayToBePrinted, String title) {
+  public void printResults(E[] arrayToBePrinted, String title, BufferedWriter bw) throws IOException {
 
-    System.out.println(title);
-    System.out.print("The sorted array is ");
+	  bw.write(title + "\n");
+	  bw.write("The sorted array is \n");
+//    System.out.println(title);
+//    System.out.print("The sorted array is ");
 
     for (int i = 0; i < arrayToBePrinted.length; i++) {
 
-      System.out.print(arrayToBePrinted[i] + "  ");
+    	bw.write(arrayToBePrinted[i] + "  ");
+//      System.out.print(arrayToBePrinted[i] + "  ");
     }
 
-    System.out.println("");
-    System.out.println("This method made " + compareCount + " comparisons.");
-    System.out.println("This method made " + swapCount + " swaps.");
-    System.out.println("This method took " + sortTime + " nano seconds to complete.");
-    System.out.println("");
+    bw.newLine();
+    bw.write("This method made " + compareCount + " comparisons. \n");
+    bw.write("This method made " + swapCount + " swaps. \n");
+    bw.write("This method took " + sortTime + " nano seconds to complete. \n");
+    bw.newLine();
+    
+//    System.out.println("");
+//    System.out.println("This method made " + compareCount + " comparisons.");
+//    System.out.println("This method made " + swapCount + " swaps.");
+//    System.out.println("This method took " + sortTime + " nano seconds to complete.");
+//    System.out.println("");
   }
 
 

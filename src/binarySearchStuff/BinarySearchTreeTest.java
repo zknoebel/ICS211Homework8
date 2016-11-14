@@ -1,3 +1,4 @@
+package binarySearchStuff;
 import static org.junit.Assert.*;
 
 import java.util.Comparator;

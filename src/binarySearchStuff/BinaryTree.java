@@ -1,3 +1,4 @@
+package binarySearchStuff;
 
 /**
  * import i0 and scanner to create trees from strings

@@ -78,7 +78,6 @@ searches for every item it adds.
 |_____________________________________________________________________________|
 
 Contributors:
-	For this assignment, most of the code was already written in the text book,
-so I copied what was useful and used it in my assignment. Probably about 80% 
-of what is in this project was either copied straight out of the book or
-given to us by professor Moore.
+	Professor Moore.
+	There was a lot of code already written in the text book "Data Structures:
+		Abstraction and Design using Java"
