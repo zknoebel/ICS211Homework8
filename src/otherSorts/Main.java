@@ -1,4 +1,5 @@
 package otherSorts;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,10 +15,11 @@ import binarySearchStuff.*;
 public class Main {
 
 	/*
-	 * Method main runs four different run time test methods. Three big O tests and one average time test
+	 * Method main runs four different run time test methods. Three big O tests
+	 * and one average time test
 	 */
-	public static void main(String[] args) throws java.io.IOException{
-		bw = new BufferedWriter(new FileWriter("sortTests.txt"));
+	public static void main(String[] args) throws java.io.IOException {
+		bw = new BufferedWriter(new FileWriter("timeTest.txt"));
 
 		Main tester = new Main();
 
@@ -25,9 +27,9 @@ public class Main {
 		tester.bigOInsTest();
 		tester.bigOSelTest();
 		tester.BinarySearchTest();
-		//    avgTest takes a couple minutes depending on how fast your computer is
+		// avgTest takes a couple minutes depending on how fast your computer is
 		tester.avgTest();
-
+		tester.testCornerCases();
 		bw.close();
 	}
 
@@ -42,8 +44,9 @@ public class Main {
 	long binaryTestFinish;
 
 	/*
-	 * these variables are used to store the values of the number of comparisons, swaps and run times of the bubbleSort,
-	 * insertionSort and selectionSort methods
+	 * these variables are used to store the values of the number of
+	 * comparisons, swaps and run times of the bubbleSort, insertionSort and
+	 * selectionSort methods
 	 */
 	long avgBubComps = 0, avgBubSwaps = 0, avgBubTime = 0;
 	long avgInsComps = 0, avgInsSwaps = 0, avgInsTime = 0;
@@ -52,9 +55,9 @@ public class Main {
 
 	Integer[] testArray;
 
-
 	/*
-	 * builds an array of length arrLength that is filled with random numbers between -999 and 999
+	 * builds an array of length arrLength that is filled with random numbers
+	 * between -999 and 999
 	 */
 	private void arrayBuild(int arrLength) {
 		testArray = new Integer[arrLength];
@@ -64,10 +67,10 @@ public class Main {
 
 	}
 
-
 	/*
-	 * runs the bubbleSort, insertionSort and selectionSort methods of class ArraySort numberOfTests times and then takes
-	 * the averages of the number of swaps, number of comparisons and run times for each method
+	 * runs the bubbleSort, insertionSort and selectionSort methods of class
+	 * ArraySort numberOfTests times and then takes the averages of the number
+	 * of swaps, number of comparisons and run times for each method
 	 */
 	private void avgTest() throws IOException {
 
@@ -94,32 +97,39 @@ public class Main {
 		}
 
 		avgBinaryTime = System.nanoTime();
-		for (int i = 0; i < numberOfTests; i++){
+		for (int i = 0; i < numberOfTests; i++) {
 			arrayBuild(arrayLength);
 			bst = new BinarySearchTree<Integer>(comp);
-			for(int j = 0; j < arrayLength; j ++){
+			for (int j = 0; j < arrayLength; j++) {
 				bst.add(testArray[j]);
 			}
 		}
-		avgBinaryTime = (System.nanoTime() - avgBinaryTime)/numberOfTests;
+		avgBinaryTime = (System.nanoTime() - avgBinaryTime) / numberOfTests;
 
-
-		//    System.out.println("Bubble Sort");
-		//    System.out.println("Average number of comparisons: " + avgBubComps / numberOfTests);
-		//    System.out.println("Average number of swaps: " + avgBubSwaps / numberOfTests);
-		//    System.out.println("Average sort time: " + avgBubTime / numberOfTests + " nano Seconds");
-		//    System.out.println("");
-		//    System.out.println("Insertion Sort");
-		//    System.out.println("Average number of comparisons: " + avgInsComps / numberOfTests);
-		//    System.out.println("Average number of swaps: " + avgInsSwaps / numberOfTests);
-		//    System.out.println("Average sort time: " + avgInsTime / numberOfTests + " nano Seconds");
-		//    System.out.println("");
-		//    System.out.println("Selection Sort");
-		//    System.out.println("Average number of comparisons: " + avgSelComps / numberOfTests);
-		//    System.out.println("Average number of swaps: " + avgSelSwaps / numberOfTests);
-		//    System.out.println("Average sort time: " + avgSelTime / numberOfTests + " nano Seconds");
-		//    System.out.println("");
-
+		// System.out.println("Bubble Sort");
+		// System.out.println("Average number of comparisons: " + avgBubComps /
+		// numberOfTests);
+		// System.out.println("Average number of swaps: " + avgBubSwaps /
+		// numberOfTests);
+		// System.out.println("Average sort time: " + avgBubTime / numberOfTests
+		// + " nano Seconds");
+		// System.out.println("");
+		// System.out.println("Insertion Sort");
+		// System.out.println("Average number of comparisons: " + avgInsComps /
+		// numberOfTests);
+		// System.out.println("Average number of swaps: " + avgInsSwaps /
+		// numberOfTests);
+		// System.out.println("Average sort time: " + avgInsTime / numberOfTests
+		// + " nano Seconds");
+		// System.out.println("");
+		// System.out.println("Selection Sort");
+		// System.out.println("Average number of comparisons: " + avgSelComps /
+		// numberOfTests);
+		// System.out.println("Average number of swaps: " + avgSelSwaps /
+		// numberOfTests);
+		// System.out.println("Average sort time: " + avgSelTime / numberOfTests
+		// + " nano Seconds");
+		// System.out.println("");
 
 		bw.write("Bubble Sort \n");
 		bw.write("Average number of comparisons: " + avgBubComps / numberOfTests + "\n");
@@ -140,11 +150,41 @@ public class Main {
 		bw.write("Average sort time: " + avgBinaryTime + " nano Seconds \n");
 	}
 
+	private void testCornerCases() throws IOException {
+		avgBinaryTime = System.nanoTime();
+		for (int i = 0; i < numberOfTests; i++) {
+			bst = new BinarySearchTree<Integer>(comp);
+			for (int j = 0; j < arrayLength; j++) {
+				bst.add(j);
+			}
+		}
+		avgBinaryTime = (System.nanoTime() - avgBinaryTime) / numberOfTests;
+		bw.newLine();
+		bw.write("Binary Search Tree Sort \n");
+		bw.write("Corner case: ascending \n");
+		bw.write("Average sort time: " + avgBinaryTime + " nano Seconds \n");
+
+		avgBinaryTime = System.nanoTime();
+		for (int i = 0; i < numberOfTests; i++) {
+			arrayBuild(arrayLength);
+			bst = new BinarySearchTree<Integer>(comp);
+			for (int j = arrayLength - 1; j > -1; j--) {
+				bst.add(j);
+			}
+		}
+		avgBinaryTime = (System.nanoTime() - avgBinaryTime) / numberOfTests;
+		bw.newLine();
+		bw.write("Binary Search Tree Sort \n");
+		bw.write("Corner case: decending \n");
+		bw.write("Average sort time: " + avgBinaryTime + " nano Seconds \n");
+
+	}
 
 	/*
-	 * runs the bubbleSort method for arrays with random numbers between -999 and 999. Starts with an array of 10, next an
-	 * array of 100, then an array of 1000 and finally an array of 5000. This is used to show how the run time of the
-	 * bubble sort grows exponentially
+	 * runs the bubbleSort method for arrays with random numbers between -999
+	 * and 999. Starts with an array of 10, next an array of 100, then an array
+	 * of 1000 and finally an array of 5000. This is used to show how the run
+	 * time of the bubble sort grows exponentially
 	 */
 	private void bigOBubTest() throws IOException {
 		arrayBuild(10);
@@ -161,11 +201,17 @@ public class Main {
 		test.printResults(testArray, "Bubble Sort", bw);
 	}
 
+	/**
+	 * Created a quick test for checking how long the the binary search tree
+	 * takes to sort items
+	 * 
+	 * @throws IOException
+	 */
 	private void BinarySearchTest() throws IOException {
 		arrayBuild(10);
 		bst = new BinarySearchTree<Integer>(comp);
 		binaryTestStart = System.nanoTime();
-		for(int i = 0; i < testArray.length; i ++){
+		for (int i = 0; i < testArray.length; i++) {
 			bst.add(testArray[i]);
 		}
 		binaryTestFinish = System.nanoTime();
@@ -176,7 +222,7 @@ public class Main {
 		arrayBuild(100);
 		bst = new BinarySearchTree<Integer>(comp);
 		binaryTestStart = System.nanoTime();
-		for(int i = 0; i < testArray.length; i ++){
+		for (int i = 0; i < testArray.length; i++) {
 			bst.add(testArray[i]);
 		}
 		binaryTestFinish = System.nanoTime();
@@ -187,7 +233,7 @@ public class Main {
 		arrayBuild(1000);
 		bst = new BinarySearchTree<Integer>(comp);
 		binaryTestStart = System.nanoTime();
-		for(int i = 0; i < testArray.length; i ++){
+		for (int i = 0; i < testArray.length; i++) {
 			bst.add(testArray[i]);
 		}
 		binaryTestFinish = System.nanoTime();
@@ -198,7 +244,7 @@ public class Main {
 		arrayBuild(5000);
 		bst = new BinarySearchTree<Integer>(comp);
 		binaryTestStart = System.nanoTime();
-		for(int i = 0; i < testArray.length; i ++){
+		for (int i = 0; i < testArray.length; i++) {
 			bst.add(testArray[i]);
 		}
 		binaryTestFinish = System.nanoTime();
@@ -208,11 +254,11 @@ public class Main {
 		bw.newLine();
 	}
 
-
 	/*
-	 * runs the insertionSort method for arrays with random numbers between -999 and 999. Starts with an array of 10, next
-	 * an array of 100, then an array of 1000 and finally an array of 5000. This is used to show how the run time of the
-	 * insertion sort grows exponentially
+	 * runs the insertionSort method for arrays with random numbers between -999
+	 * and 999. Starts with an array of 10, next an array of 100, then an array
+	 * of 1000 and finally an array of 5000. This is used to show how the run
+	 * time of the insertion sort grows exponentially
 	 */
 	private void bigOInsTest() throws IOException {
 		arrayBuild(10);
@@ -229,11 +275,11 @@ public class Main {
 		test.printResults(testArray, "Insertion Sort", bw);
 	}
 
-
 	/*
-	 * runs the selectionSort method for arrays with random numbers between -999 and 999. Starts with an array of 10, next
-	 * an array of 100, then an array of 1000 and finally an array of 5000. This is used to show how the run time of the
-	 * selection sort grows exponentially
+	 * runs the selectionSort method for arrays with random numbers between -999
+	 * and 999. Starts with an array of 10, next an array of 100, then an array
+	 * of 1000 and finally an array of 5000. This is used to show how the run
+	 * time of the selection sort grows exponentially
 	 */
 	private void bigOSelTest() throws IOException {
 		arrayBuild(10);
@@ -250,9 +296,9 @@ public class Main {
 		test.printResults(testArray, "Selection Sort", bw);
 	}
 
-
 	/*
-	 * used to create on object of Main so the methods other than main can be used
+	 * used to create on object of Main so the methods other than main can be
+	 * used
 	 */
 	Main() {
 

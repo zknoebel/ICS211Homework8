@@ -26,8 +26,8 @@ import java.util.List;
  * @param <E>
  */
 public class BinarySearchTree<E> extends BinaryTree<E> implements SearchTree<E> {
-  private static final long serialVersionUID = 1L;
-  private Comparator<E> comp;
+	private static final long serialVersionUID = 1L;
+	private Comparator<E> comp;
 	private boolean addReturn = false;
 	private E deleteReturn;
 	private int depth = 0;
@@ -307,17 +307,17 @@ public class BinarySearchTree<E> extends BinaryTree<E> implements SearchTree<E> 
 	}
 
 	/**
-	 * creates a list of elements from the tree, ordered by level
-	 * from left to right
+	 * creates a list of elements from the tree, ordered by level from left to
+	 * right
 	 */
 	@Override
 	public List<E> levelOrderTraversal() {
 		levelSorter = new ArrayList<ArrayList<E>>();
 		List<E> returnList = new ArrayList<E>();
-		
+
 		levelOrderTraversal(root, 1);
 
-		for(int i = 0; i < levelSorter.size(); i ++){
+		for (int i = 0; i < levelSorter.size(); i++) {
 			returnList.addAll(levelSorter.get(i));
 		}
 		return returnList;
