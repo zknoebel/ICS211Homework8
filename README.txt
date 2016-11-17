@@ -17,7 +17,7 @@ if the right child was a root.
 
 	This structure looks something like this:
 
-					12
+										12
                                      ___/\___
                                     /        \
                                    9         13

@@ -51,7 +51,7 @@ public class BinarySearchTree<E> extends BinaryTree<E> implements SearchTree<E> 
 	@Override
 	public boolean add(E item) {
 		root = add(root, item);
-		return addReturn;
+		return !addReturn;
 	}
 
 	/**
