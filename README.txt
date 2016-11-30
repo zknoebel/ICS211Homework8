@@ -73,14 +73,14 @@ is O(n log n) this is because the search method is O(log n) and the find method
 searches for every item that it adds.
 
 O(n log n) is a pretty good big O for a sort method. Some of the other methods
-that we have used earlier in the semester are much less effecient, being O(n^2).
+that we have used earlier in the semester are much less efficient, being O(n^2).
 
 Selection sort, insertion sort and bubble sort are all O(n^2). From the earlier
-assignents, we have seen that Selection sort is typically the most effiecient of
+assignments, we have seen that Selection sort is typically the most efficient of
 the three, followed by Insertion Sort and lastly Bubble Sort. To see how much of
 a difference there is between O(n^2) and O(n log n), the methods have each been
 tested sorting 5000 random numbers 1000 times and then the average amount of 
-time for those 1000 sorts hase been recorded in the file "sortTest.txt".
+time for those 1000 sorts has been recorded in the file "sortTest.txt".
 
 These are the results:
 
@@ -105,16 +105,16 @@ Average sort time: 2279681 nano Seconds
 
 These results are from sorting 5000 random numbers. It is easy to see that
 the Binary Search Tree does the best job. However with the numbers already
-sorted, the Binary Search Tree is much less effecient. Here are the results
-for sorting 5000 numbers that are alread sorted, the first is for sorting
+sorted, the Binary Search Tree is much less efficient. Here are the results
+for sorting 5000 numbers that are already sorted, the first is for sorting
 ascending numbers (0 - 4999) and the second is for sorting numbers (4999 -
 0). The slight difference in the two average times (about .2 seconds) is 
 most likely due to the way that the sort is written to check for smaller
 numbers first and larger numbers second. That means that each time the 
 sort checks for the numbers in the ascending case, it first checks if the
 number is smaller, realizes that it is not, and then checks to see if the 
-number is larger, while sorting the decending case, it only checks to see
-if the number is smaller, and sicne it is every time, it does not have to
+number is larger, while sorting the descending case, it only checks to see
+if the number is smaller, and since it is every time, it does not have to
 check to see if the number is larger.
 
 Binary Search Tree Sort 
@@ -122,7 +122,7 @@ Corner case: ascending
 Average sort time: 161446700 nano Seconds 
 
 Binary Search Tree Sort 
-Corner case: decending 
+Corner case: descending 
 Average sort time: 137502267 nano Seconds 
 
 Contributors:
